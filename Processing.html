@@ -17,80 +17,80 @@ h1{color:RoyalBlue;}
 <h1>Processing Data of Mass Spectrometry</h1> 
 
 <h3>Signal Resampling </h3>
-<p>El remuestreo es un proceso en el que se obtiene una nueva seÒal 
-con valores controlados de m/z, esta nueva seÒal debe ser en lo posible 
-similar a la original. Valores controlados significa que el n˙mero de puntos 
-pueden ser mayores, iguales o menores al de la seÒal original. Cuando la seÒal 
-a remuestrear es de mayor resoluciÛn se realiza muestreo por abajo, cuando la seÒal
- es de menor resoluciÛn se realiza muestreo por arriba y para el obtener la misma resoluciÛn 
-solo se sincroniza. Los datos EM son de alta resoluciÛn por lo que resulta difÌcil trabajar 
+<p>El remuestreo es un proceso en el que se obtiene una nueva se√±al 
+con valores controlados de m/z, esta nueva se√±al debe ser en lo posible 
+similar a la original. Valores controlados significa que el n√∫mero de puntos 
+pueden ser mayores, iguales o menores al de la se√±al original. Cuando la se√±al 
+a remuestrear es de mayor resoluci√≥n se realiza muestreo por abajo, cuando la se√±al
+ es de menor resoluci√≥n se realiza muestreo por arriba y para el obtener la misma resoluci√≥n 
+solo se sincroniza. Los datos EM son de alta resoluci√≥n por lo que resulta dif√≠cil trabajar 
 con algoritmos computacionales intensivos que pueden llegar al limite del ordenador. Una 
-medida aceptable es obtener una resoluciÛn de datos manejable por medio de la eliminaciÛn
- de datos redundantes obteniendo asÌ seÒales de longitud homogÈnea.
+medida aceptable es obtener una resoluci√≥n de datos manejable por medio de la eliminaci√≥n
+ de datos redundantes obteniendo as√≠ se√±ales de longitud homog√©nea.
 
 Para reducir o 
-aumentar la resoluciÛn de los espectros de utiliza un conversor de frecuencias de muestreo con 
-el factor I/D. Donde, I representa interpolaciÛn y D representa decimaciÛn.</p>  
-<img src="muestras remuestreadas dataWCX2CSV.jpg" alt="Resample">  
+aumentar la resoluci√≥n de los espectros de utiliza un conversor de frecuencias de muestreo con 
+el factor I/D. Donde, I representa interpolaci√≥n y D representa decimaci√≥n.</p>  
+<img src="images/muestras remuestreadas dataWCX2CSV.jpg" alt="Resample">  
 <br>  
  
 <h3>Correcting the Background </h3> 
-<p>Los datos de manera general muestran una lÌnea de base variable consecuencia del ruido 
-quÌmico en la matriz o sobrecarga de iones. Se origina en el detector de iones cuando este se
- satura. Esta saturaciÛn disminuye lentamente con el tiempo.  La lÌnea de base es un desplazamiento 
+<p>Los datos de manera general muestran una l√≠nea de base variable consecuencia del ruido 
+qu√≠mico en la matriz o sobrecarga de iones. Se origina en el detector de iones cuando este se
+ satura. Esta saturaci√≥n disminuye lentamente con el tiempo.  La l√≠nea de base es un desplazamiento 
 de los iones en el eje vertical que eleva los valores de m/z bajos mientras que los valores 
-altos de m/z no se ven tan afectados. Para corregir este problema se estima la lÌnea de base y 
-se resta del espectro original es decir se halla el punto m·s bajo del espectro y se arrastra hasta 
+altos de m/z no se ven tan afectados. Para corregir este problema se estima la l√≠nea de base y 
+se resta del espectro original es decir se halla el punto m√°s bajo del espectro y se arrastra hasta 
 cero en el eje vertical.
 
- Se han desarrollado varias tÈcnicas que ayudan a estimar la 
-linea de base como: Filtros pasa altos implementados con transformada r·pida de Fourier, teorÌa de 
-wavelets y filtros digitales. Los mÈtodos mencionados son poco usuales ya que estos introducen artefactos
- y distorsionan la seÒal y seria necesario modelar un filtro para cada espectro. Con estas consideraciones 
-el algoritmo m·s utilizado para estimar la lÌnea de base en EM se basa en interpolaciÛn spline o 
+ Se han desarrollado varias t√©cnicas que ayudan a estimar la 
+linea de base como: Filtros pasa altos implementados con transformada r√°pida de Fourier, teor√≠a de 
+wavelets y filtros digitales. Los m√©todos mencionados son poco usuales ya que estos introducen artefactos
+ y distorsionan la se√±al y seria necesario modelar un filtro para cada espectro. Con estas consideraciones 
+el algoritmo m√°s utilizado para estimar la l√≠nea de base en EM se basa en interpolaci√≥n spline o 
 suavizado.</p>
-<img src="correcion line base dataWCX2CSV.jpg" alt="Correcting of baseline">  
+<img src="images/correcion line base dataWCX2CSV.jpg" alt="Correcting of baseline">  
 <br>
 
 <h3>Aligning Mass/Charge Values </h3> 
 
-<p>El pre-procesamiento es de suma importancia antes de realizar la etapa de alineaciÛn de picos 
-debido a que existe una variaciÛn significativa entre las muestras de la intensidad y la ubicaciÛn de 
-los picos en $m/z$, por la mala calibraciÛn de los espectrÛmetros de masas. La idea principal es reemplazar 
+<p>El pre-procesamiento es de suma importancia antes de realizar la etapa de alineaci√≥n de picos 
+debido a que existe una variaci√≥n significativa entre las muestras de la intensidad y la ubicaci√≥n de 
+los picos en $m/z$, por la mala calibraci√≥n de los espectr√≥metros de masas. La idea principal es reemplazar 
 los valores originales de m/z por valores calibrados o alineados de m/z, definiendo un vector de picos 
-de con los valores m·ximos de intensidades, los picos no alineados se desplazan hacia los picos de mayor 
-intensidad, obteniendo asÌ nuevos vectores de intensidades.</p> 
-<img src="aligning.jpg" alt="Resample">  
+de con los valores m√°ximos de intensidades, los picos no alineados se desplazan hacia los picos de mayor 
+intensidad, obteniendo as√≠ nuevos vectores de intensidades.</p> 
+<img src="images/alineacion dataWCX2CSV.jpg" alt="Resample">  
 <br>
 
 <h3>Normalizing Relative Intensity </h3>
-<p>La normalizaciÛn se realiza para los datos experimentales y hacer que los diferentes espectros 
-sean comparables con sus intensidades relativas. Este mÈtodo se utiliza para identificar y eliminar 
+<p>La normalizaci√≥n se realiza para los datos experimentales y hacer que los diferentes espectros 
+sean comparables con sus intensidades relativas. Este m√©todo se utiliza para identificar y eliminar 
 las variaciones de las muestras que tienen aleatoriamente y que son causadas por la limitada sensibilidad 
 del receptor y el ruido.
 
- En esta etapa es necesario cambiar la escala de la intensidad m·xima 
+ En esta etapa es necesario cambiar la escala de la intensidad m√°xima 
 en cada espectro y asignarle un cierto valor y que el resto de valores se ajusten proporcionalmente a este 
 valor</p>  
-<img src="alineacion dataWCX2CSV.jpg" alt="Resample">  
+<img src="images/alineacion dataWCX2CSV.jpg" alt="Resample">  
 <br>
 
 <h3>Smoothing Noise </h3>  
-<p>En esta etapa se busca reducir el ruido de tipo elÈctrico causado por la instrumentaciÛn.  Para
- ello se aplica tÈcnicas de suavizado a travÈs del filtros digitales o smoothing.  Los filtros 
+<p>En esta etapa se busca reducir el ruido de tipo el√©ctrico causado por la instrumentaci√≥n.  Para
+ ello se aplica t√©cnicas de suavizado a trav√©s del filtros digitales o smoothing.  Los filtros 
 digitales que pueden ser aplicados son los de tipo Infinite impulse response (IIR) y
- Finite Impulse Response (FIR), los cuales deben ser diseÒados en funciÛn de sus caracterÌsticas
+ Finite Impulse Response (FIR), los cuales deben ser dise√±ados en funci√≥n de sus caracter√≠sticas
  de frecuencia por lo que no se recomiendan.
 
  Filtrado de polinomio o smoothing consiste en suavizar 
-muestra a muestra de la seÒal bas·ndose en un ajuste polinomio regional.  Este tipo de filtro se 
-adapta a la variaciÛn de frecuencia de muestreo y conserva la agudeza de los picos. El mÈtodo de suavizado
- polinÛmico de mayor aceptaciÛn es el de Savitzky-Golay y Kaiser que emplea un filtro digital de polinomio 
-de mÌnimos cuadrados el cual conserva la mayor parte de las caracterÌsticas de la seÒal asÌ como la resoluciÛn 
+muestra a muestra de la se√±al bas√°ndose en un ajuste polinomio regional.  Este tipo de filtro se 
+adapta a la variaci√≥n de frecuencia de muestreo y conserva la agudeza de los picos. El m√©todo de suavizado
+ polin√≥mico de mayor aceptaci√≥n es el de Savitzky-Golay y Kaiser que emplea un filtro digital de polinomio 
+de m√≠nimos cuadrados el cual conserva la mayor parte de las caracter√≠sticas de la se√±al as√≠ como la resoluci√≥n 
 entre picos de iones y la altura de los picos.
-Sin embargo este tipo de algoritmos requiere un an·lisis mas 
+Sin embargo este tipo de algoritmos requiere un an√°lisis mas 
 exhaustivo de software</p>.
-<img src="suavizado dataWCX2CSV.jpg" alt="Resample"> h
+<img src="images/suavizado dataWCX2CSV.jpg" alt="Resample"> h
 <br>
 
 <a href="index.html</a> 
