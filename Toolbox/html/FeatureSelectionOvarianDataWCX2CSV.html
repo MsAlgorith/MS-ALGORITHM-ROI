@@ -1,0 +1,482 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>FeatureSelectionOvarianDataWCX2CSV</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-03-19"><meta name="DC.source" content="FeatureSelectionOvarianDataWCX2CSV.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> [] = FeatureSelectionOvarianDataWCX2CSV ()
+</pre><pre class="codeinput">fprintf(<span class="string">'********************************************************\n'</span>)
+fprintf(<span class="string">'%s                                                    %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                 PROYECTO DE TITULACION,            %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                                                    %s\n'</span>,91,93)
+fprintf(<span class="string">'%s REALIZADO POR:                                     %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                 * SOFIA JAZMINA CALLE J.           %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                 * SILVIA S. CHASILUIZA P.          %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                                                    %s\n'</span>,91,93)
+fprintf(<span class="string">'%s DIRECTOR:                                          %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                 ING. ROBERTO HERRERA LARA          %s\n'</span>,91,93)
+fprintf(<span class="string">'%s CODIRECTOR:                                        %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                 ING. JORGE CARVAJAL, MSC           %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                                                    %s\n'</span>,91,93)
+fprintf(<span class="string">'%s TEMA:                                              %s\n'</span>,91,93)
+fprintf(<span class="string">'%s     DISE&Ntilde;O DE UN ALGORITMO PARA LA DETECCION Y     %s\n'</span>,91,93)
+fprintf(<span class="string">'%s VALIDACION DE PATRONES DE BIOMARCACION EN CONJUNTOS%s\n'</span>,91,93)
+fprintf(<span class="string">'%s      DE MEDICIONES DE ESPECTROMETRIA DE MASAS      %s\n'</span>,91,93)
+fprintf(<span class="string">'%s           APLICADOS AL ESTUDIO DEL CANCER          %s\n'</span>,91,93)
+fprintf(<span class="string">'%s                                                    %s\n'</span>,91,93)
+fprintf(<span class="string">'********************************************************\n'</span>)
+
+fprintf(<span class="string">'======================================================\n'</span>)
+fprintf(<span class="string">'%s                                                    %s\n'</span>,20,22)
+fprintf(<span class="string">'%s    FEATURE SELECTION OvarianCDPostQAQC             %s\n'</span>,20,22)
+fprintf(<span class="string">'%s                                                    %s\n'</span>,20,22)
+fprintf(<span class="string">'%s %s\n'</span>,20,22)
+fprintf(<span class="string">'%s %s\n'</span>,20,22)
+fprintf(<span class="string">'%s        %s\n'</span>,20,22)
+fprintf(<span class="string">'%s    %s\n'</span>,20,22)
+fprintf(<span class="string">'%s %s\n'</span>,20,22)
+fprintf(<span class="string">'%s     %s\n'</span>,20,22)
+fprintf(<span class="string">'%s  %s\n'</span>,0,22)
+fprintf(<span class="string">'%s %s\n'</span>,20,22)
+fprintf(<span class="string">'%s    %s\n'</span>,20,22)
+fprintf(<span class="string">'%s                               %s\n'</span>,20,22)
+fprintf(<span class="string">'%s %s\n'</span>,20,22)
+fprintf(<span class="string">'%s %s\n'</span>,20,22)
+
+fprintf(<span class="string">'======================================================\n'</span>)
+
+<span class="comment">% Descripcion</span>
+<span class="comment">%</span>
+
+<span class="comment">% carga</span>
+clc; clear <span class="string">all</span>; close <span class="string">all</span>;
+
+<span class="comment">%genera los paths de los datos y el toolbox</span>
+ToolboxAndData = CargarToolboxAndData(1); <span class="comment">% 1 laptop, 2 pc escritorio</span>
+addpath(ToolboxAndData.data{1});
+cd(ToolboxAndData.data{6});
+
+load <span class="string">OvarianDataWCX2CSV.mat</span>
+<span class="comment">%estructura de path de directorios</span>
+cd(ToolboxAndData.data{5});
+
+<span class="comment">%http://www.mathworks.com/help/stats/examples/selecting-features-for-classifying-high-dimensional-data.html</span>
+<span class="comment">%Agrupo datos</span>
+
+AgruparEtiquetas = vertcat(EtiquetasGrupo1,EtiquetasGrupo2);
+<span class="comment">%agrupo matrices datos</span>
+
+Mediciones = datosG1G2';
+
+<span class="comment">%generador de numeros aleatorios</span>
+
+<span class="comment">% division de conjuntos en entrenamiento y test</span>
+[IndicesParticionConjunto,  <span class="keyword">...</span>
+    DatosEntrenamiento, DatosPrueba,  EtiquetasDatosEntrenamiento, <span class="keyword">...</span>
+    EtiquetasDatosPrueba ] = DivisionConjuntoTrainAndTest(Mediciones', <span class="keyword">...</span>
+    AgruparEtiquetas,5000,50);
+
+DatosEntrenamientoG1 = DatosEntrenamiento(grp2idx(EtiquetasDatosEntrenamiento)==1,:);
+DatosEntrenamientoG2 = DatosEntrenamiento(grp2idx(EtiquetasDatosEntrenamiento)==2,:);
+
+<span class="comment">%Pruebas estadisticas</span>
+[h_ttest,p_ttest,ci_ttest] = ttest2(DatosEntrenamientoG1, <span class="keyword">...</span>
+    DatosEntrenamientoG2 ,<span class="string">'Vartype'</span>,<span class="string">'equal'</span>);
+<span class="comment">%</span>
+[ p_Wilcoxon, h_Wilcoxon ] = PruebaWilcoxon(DatosEntrenamientoG1,DatosEntrenamientoG2);
+<span class="comment">%</span>
+[ p_chi2, h_chi2 ] = ChiCuadradoBondadAjuste(datosG1G2([1:70],[1:10000]),datosG1G2([71:140],[1:10000]));
+</pre><pre class="codeoutput">********************************************************
+[                                                    ]
+[                 PROYECTO DE TITULACION,            ]
+[                                                    ]
+[ REALIZADO POR:                                     ]
+[                 * SOFIA JAZMINA CALLE J.           ]
+[                 * SILVIA S. CHASILUIZA P.          ]
+[                                                    ]
+[ DIRECTOR:                                          ]
+[                 ING. ROBERTO HERRERA LARA          ]
+[ CODIRECTOR:                                        ]
+[                 ING. JORGE CARVAJAL, MSC           ]
+[                                                    ]
+[ TEMA:                                              ]
+[     DISE&Ntilde;O DE UN ALGORITMO PARA LA DETECCION Y     ]
+[ VALIDACION DE PATRONES DE BIOMARCACION EN CONJUNTOS]
+[      DE MEDICIONES DE ESPECTROMETRIA DE MASAS      ]
+[           APLICADOS AL ESTUDIO DEL CANCER          ]
+[                                                    ]
+********************************************************
+======================================================
+                                                    
+    FEATURE SELECTION OvarianCDPostQAQC             
+                                                    
+ 
+ 
+        
+    
+ 
+     
+   
+ 
+    
+                               
+ 
+ 
+======================================================
+
+ToolboxAndData = 
+
+    data: {'C:\Users\Sofy\Documents\MATLAB\Tesis y Documentacion\TesisDat...'}
+
+</pre><pre class="codeoutput error">Index exceeds matrix dimensions.
+
+Error in FeatureSelectionOvarianDataWCX2CSV (line 83)
+[ p_chi2, h_chi2 ] = ChiCuadradoBondadAjuste(datosG1G2([1:70],[1:10000]),datosG1G2([71:140],[1:10000]));
+</pre><pre class="codeinput">figure
+ecdf(p_ttest)<span class="comment">% el 95%de los datos son utilizables, en teoria no esta mal.</span>
+h1 = get(gca,<span class="string">'children'</span>); <span class="comment">%</span>
+set(h1,<span class="string">'LineWidth'</span>,2,<span class="string">'Color'</span>,<span class="string">'r'</span>);
+xlabel(<span class="string">'P value'</span>);
+ylabel(<span class="string">'CDF value'</span>);
+title(<span class="string">'Funcion de Probalidad t-test OvarianDataWCX2CSV'</span>)
+
+
+figure
+ecdf(p_Wilcoxon)<span class="comment">% el 95%de los datos son utilizables, en teoria no esta mal.</span>
+h1 = get(gca,<span class="string">'children'</span>); <span class="comment">%</span>
+set(h1,<span class="string">'LineWidth'</span>,2,<span class="string">'Color'</span>,<span class="string">'r'</span>);
+xlabel(<span class="string">'P value'</span>);
+ylabel(<span class="string">'CDF value'</span>);
+
+figure
+ecdf(p_chi2)<span class="comment">% el 95%de los datos son utilizables, en teoria no esta mal.</span>
+h1 = get(gca,<span class="string">'children'</span>); <span class="comment">%</span>
+set(h1,<span class="string">'LineWidth'</span>,2,<span class="string">'Color'</span>,<span class="string">'r'</span>);
+xlabel(<span class="string">'P value'</span>);
+ylabel(<span class="string">'CDF value'</span>);
+</pre><pre class="codeinput">[~,CoeficientesIndicesP_ttest]= sort(p_ttest,2); <span class="comment">% sort the features(ORDENAR indices)</span>
+
+[~,CoeficientesIndicesP_Wilcoxon]= sort(p_Wilcoxon,2); <span class="comment">% sort the features(ORDENAR indices)</span>
+
+[~,CoeficientesIndicesP_chi2]= sort(p_chi2,2); <span class="comment">% sort the features(ORDENAR indices)</span>
+
+
+
+GruposDeBusquedaSobreentrenamiento = 100:100:2000; <span class="comment">%20% DE 10000</span>
+rng(3000,<span class="string">'multFibonacci'</span>);
+
+<span class="comment">%busqueda inflexion sobreentrenamiento</span>
+ErroresClasificacion_ttest = [];
+<span class="keyword">for</span> i=1:20;
+    i
+    fs_ttest = CoeficientesIndicesP_ttest(1:GruposDeBusquedaSobreentrenamiento(i));
+    <span class="comment">%crea clasificador Clasificador</span>
+    Clasificador_ttest = fitensemble(DatosEntrenamiento(:,fs_ttest),<span class="keyword">...</span>
+        EtiquetasDatosEntrenamiento,<span class="string">'AdaBoostM1'</span>,100,<span class="string">'Tree'</span>);
+    <span class="comment">%error de clasificacion ttest</span>
+    hold <span class="string">on</span>
+    ErrorClasificador_ttest = loss(Clasificador_ttest,DatosPrueba(:,fs_ttest),<span class="keyword">...</span>
+        EtiquetasDatosPrueba,<span class="string">'mode'</span>,<span class="string">'cumulative'</span>);
+    ErroresClasificacion_ttest(i) = mean(ErrorClasificador_ttest);
+    bar(i,mean(ErrorClasificador_ttest));
+    xlabel(<span class="string">'Number of Rundes'</span>);
+    ylabel(<span class="string">'Generalization Error'</span>);
+    hold <span class="string">off</span>
+<span class="keyword">end</span>
+
+
+ErroresClasificacion_Wilcoxon = [];
+GruposDeBusquedaSobreentrenamiento = 100:100:3500; <span class="comment">%20% DE 10000</span>
+rng(3000,<span class="string">'multFibonacci'</span>);
+<span class="comment">%busqueda inflexion sobreentrenamiento</span>
+<span class="keyword">for</span> i=1:35;
+    i
+    fs_Wilcoxon = CoeficientesIndicesP_Wilcoxon(1:GruposDeBusquedaSobreentrenamiento(i));
+    <span class="comment">%crea clasificador Clasificador</span>
+    Clasificador_Wilcoxon = fitensemble(DatosEntrenamiento(:,fs_Wilcoxon),<span class="keyword">...</span>
+        EtiquetasDatosEntrenamiento,<span class="string">'AdaBoostM1'</span>,100,<span class="string">'Tree'</span>);
+
+    <span class="comment">%error de clasificacion</span>
+    hold <span class="string">on</span>
+    <span class="comment">%figure</span>
+    ErrorClasificador_Wilcoxon = loss(Clasificador_Wilcoxon,DatosPrueba(:,fs_Wilcoxon),<span class="keyword">...</span>
+        EtiquetasDatosPrueba,<span class="string">'mode'</span>,<span class="string">'cumulative'</span>);
+    ErroresClasificacion_Wilcoxon(i) = mean(ErrorClasificador_Wilcoxon);
+    bar(i,mean(ErrorClasificador_Wilcoxon));
+    xlabel(<span class="string">'Number of Rundes'</span>);
+    ylabel(<span class="string">'Generalization Error'</span>);
+    hold <span class="string">off</span>
+<span class="keyword">end</span>
+</pre><p>Busqueda de Minimo relativo ttest</p><pre class="codeinput"><span class="keyword">for</span> i=1:length(ErroresClasificacion_ttest)
+    <span class="keyword">if</span> ErroresClasificacion_ttest(i+1)&gt; ErroresClasificacion_ttest(i)
+        Iteracion_ttest = i;
+            <span class="keyword">break</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>; clear <span class="string">auxMin</span>;
+<span class="comment">% Busqueda de Minimo relativo _Wilcoxon</span>
+<span class="keyword">for</span> i=1:length(ErroresClasificacion_Wilcoxon)
+    <span class="keyword">if</span> ErroresClasificacion_Wilcoxon(i+1)&gt; ErroresClasificacion_Wilcoxon(i)
+        Iteracion_Wilcoxon = i;
+            <span class="keyword">break</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>; clear <span class="string">auxMin</span>;
+<span class="comment">% Busqueda de Minimo relativo _chi2</span>
+<span class="keyword">for</span> i=1:length(ErroresClasificacion_chi2)
+    <span class="keyword">if</span> ErroresClasificacion_chi2(i+1)&gt; ErroresClasificacion_chi2(i)
+        Iteracion_chi2 = i;
+            <span class="keyword">break</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>; clear <span class="string">auxMin</span>;
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function [] = FeatureSelectionOvarianDataWCX2CSV ()
+
+fprintf('********************************************************\n')
+fprintf('%s                                                    %s\n',91,93)
+fprintf('%s                 PROYECTO DE TITULACION,            %s\n',91,93)
+fprintf('%s                                                    %s\n',91,93)
+fprintf('%s REALIZADO POR:                                     %s\n',91,93)
+fprintf('%s                 * SOFIA JAZMINA CALLE J.           %s\n',91,93)
+fprintf('%s                 * SILVIA S. CHASILUIZA P.          %s\n',91,93)
+fprintf('%s                                                    %s\n',91,93)
+fprintf('%s DIRECTOR:                                          %s\n',91,93)
+fprintf('%s                 ING. ROBERTO HERRERA LARA          %s\n',91,93)
+fprintf('%s CODIRECTOR:                                        %s\n',91,93)
+fprintf('%s                 ING. JORGE CARVAJAL, MSC           %s\n',91,93)
+fprintf('%s                                                    %s\n',91,93)
+fprintf('%s TEMA:                                              %s\n',91,93)
+fprintf('%s     DISEÑO DE UN ALGORITMO PARA LA DETECCION Y     %s\n',91,93)
+fprintf('%s VALIDACION DE PATRONES DE BIOMARCACION EN CONJUNTOS%s\n',91,93)
+fprintf('%s      DE MEDICIONES DE ESPECTROMETRIA DE MASAS      %s\n',91,93)
+fprintf('%s           APLICADOS AL ESTUDIO DEL CANCER          %s\n',91,93)
+fprintf('%s                                                    %s\n',91,93)
+fprintf('********************************************************\n')
+
+fprintf('======================================================\n')
+fprintf('%s                                                    %s\n',20,22)
+fprintf('%s    FEATURE SELECTION OvarianCDPostQAQC             %s\n',20,22)
+fprintf('%s                                                    %s\n',20,22)
+fprintf('%s %s\n',20,22)
+fprintf('%s %s\n',20,22)
+fprintf('%s        %s\n',20,22)
+fprintf('%s    %s\n',20,22)
+fprintf('%s %s\n',20,22)
+fprintf('%s     %s\n',20,22)
+fprintf('%s  %s\n',0,22)
+fprintf('%s %s\n',20,22)
+fprintf('%s    %s\n',20,22)
+fprintf('%s                               %s\n',20,22)
+fprintf('%s %s\n',20,22)
+fprintf('%s %s\n',20,22)
+
+fprintf('======================================================\n')
+
+% Descripcion
+%
+
+% carga
+clc; clear all; close all;
+
+%genera los paths de los datos y el toolbox
+ToolboxAndData = CargarToolboxAndData(1); % 1 laptop, 2 pc escritorio
+addpath(ToolboxAndData.data{1});
+cd(ToolboxAndData.data{6});
+
+load OvarianDataWCX2CSV.mat
+%estructura de path de directorios
+cd(ToolboxAndData.data{5});
+
+%http://www.mathworks.com/help/stats/examples/selecting-features-for-classifying-high-dimensional-data.html
+%Agrupo datos 
+
+AgruparEtiquetas = vertcat(EtiquetasGrupo1,EtiquetasGrupo2);
+%agrupo matrices datos
+
+Mediciones = datosG1G2';
+
+%generador de numeros aleatorios
+
+% division de conjuntos en entrenamiento y test
+[IndicesParticionConjunto,  ...
+    DatosEntrenamiento, DatosPrueba,  EtiquetasDatosEntrenamiento, ...
+    EtiquetasDatosPrueba ] = DivisionConjuntoTrainAndTest(Mediciones', ...
+    AgruparEtiquetas,5000,50);
+
+DatosEntrenamientoG1 = DatosEntrenamiento(grp2idx(EtiquetasDatosEntrenamiento)==1,:);
+DatosEntrenamientoG2 = DatosEntrenamiento(grp2idx(EtiquetasDatosEntrenamiento)==2,:);
+
+%Pruebas estadisticas
+[h_ttest,p_ttest,ci_ttest] = ttest2(DatosEntrenamientoG1, ...
+    DatosEntrenamientoG2 ,'Vartype','equal');
+%
+[ p_Wilcoxon, h_Wilcoxon ] = PruebaWilcoxon(DatosEntrenamientoG1,DatosEntrenamientoG2);
+%
+[ p_chi2, h_chi2 ] = ChiCuadradoBondadAjuste(datosG1G2([1:70],[1:10000]),datosG1G2([71:140],[1:10000]));
+
+%%
+figure
+ecdf(p_ttest)% el 95%de los datos son utilizables, en teoria no esta mal.
+h1 = get(gca,'children'); %
+set(h1,'LineWidth',2,'Color','r');
+xlabel('P value');
+ylabel('CDF value');
+title('Funcion de Probalidad t-test OvarianDataWCX2CSV')
+
+
+figure
+ecdf(p_Wilcoxon)% el 95%de los datos son utilizables, en teoria no esta mal.
+h1 = get(gca,'children'); %
+set(h1,'LineWidth',2,'Color','r');
+xlabel('P value');
+ylabel('CDF value');
+
+figure
+ecdf(p_chi2)% el 95%de los datos son utilizables, en teoria no esta mal.
+h1 = get(gca,'children'); %
+set(h1,'LineWidth',2,'Color','r');
+xlabel('P value');
+ylabel('CDF value');
+
+%%
+
+[~,CoeficientesIndicesP_ttest]= sort(p_ttest,2); % sort the features(ORDENAR indices)
+
+[~,CoeficientesIndicesP_Wilcoxon]= sort(p_Wilcoxon,2); % sort the features(ORDENAR indices)
+
+[~,CoeficientesIndicesP_chi2]= sort(p_chi2,2); % sort the features(ORDENAR indices)
+
+
+
+GruposDeBusquedaSobreentrenamiento = 100:100:2000; %20% DE 10000   
+rng(3000,'multFibonacci');
+
+%busqueda inflexion sobreentrenamiento
+ErroresClasificacion_ttest = [];
+for i=1:20;
+    i
+    fs_ttest = CoeficientesIndicesP_ttest(1:GruposDeBusquedaSobreentrenamiento(i));
+    %crea clasificador Clasificador
+    Clasificador_ttest = fitensemble(DatosEntrenamiento(:,fs_ttest),...
+        EtiquetasDatosEntrenamiento,'AdaBoostM1',100,'Tree');
+    %error de clasificacion ttest
+    hold on
+    ErrorClasificador_ttest = loss(Clasificador_ttest,DatosPrueba(:,fs_ttest),...
+        EtiquetasDatosPrueba,'mode','cumulative');
+    ErroresClasificacion_ttest(i) = mean(ErrorClasificador_ttest);
+    bar(i,mean(ErrorClasificador_ttest));
+    xlabel('Number of Rundes');
+    ylabel('Generalization Error');
+    hold off
+end
+
+
+ErroresClasificacion_Wilcoxon = [];
+GruposDeBusquedaSobreentrenamiento = 100:100:3500; %20% DE 10000   
+rng(3000,'multFibonacci');
+%busqueda inflexion sobreentrenamiento
+for i=1:35;
+    i
+    fs_Wilcoxon = CoeficientesIndicesP_Wilcoxon(1:GruposDeBusquedaSobreentrenamiento(i));
+    %crea clasificador Clasificador
+    Clasificador_Wilcoxon = fitensemble(DatosEntrenamiento(:,fs_Wilcoxon),...
+        EtiquetasDatosEntrenamiento,'AdaBoostM1',100,'Tree');
+
+    %error de clasificacion
+    hold on
+    %figure
+    ErrorClasificador_Wilcoxon = loss(Clasificador_Wilcoxon,DatosPrueba(:,fs_Wilcoxon),...
+        EtiquetasDatosPrueba,'mode','cumulative');
+    ErroresClasificacion_Wilcoxon(i) = mean(ErrorClasificador_Wilcoxon);
+    bar(i,mean(ErrorClasificador_Wilcoxon));
+    xlabel('Number of Rundes');
+    ylabel('Generalization Error');
+    hold off
+end
+
+
+%%
+% Busqueda de Minimo relativo ttest
+for i=1:length(ErroresClasificacion_ttest)
+    if ErroresClasificacion_ttest(i+1)> ErroresClasificacion_ttest(i)
+        Iteracion_ttest = i;
+            break
+    end
+end; clear auxMin;
+% Busqueda de Minimo relativo _Wilcoxon
+for i=1:length(ErroresClasificacion_Wilcoxon)
+    if ErroresClasificacion_Wilcoxon(i+1)> ErroresClasificacion_Wilcoxon(i)
+        Iteracion_Wilcoxon = i;
+            break
+    end
+end; clear auxMin;
+% Busqueda de Minimo relativo _chi2
+for i=1:length(ErroresClasificacion_chi2)
+    if ErroresClasificacion_chi2(i+1)> ErroresClasificacion_chi2(i)
+        Iteracion_chi2 = i;
+            break
+    end
+end; clear auxMin;
+##### SOURCE END #####
+--></body></html>
